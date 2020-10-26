@@ -22,7 +22,7 @@
         <input type="number" name="harga" id="harga" class="input-control" value="<?= $produk['harga']; ?>">
         <small class="text-danger"><?= form_error('harga'); ?></small>
         <label for="deskripsi">Deskripsi</label>
-        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="input-control"><?= $produk['deskripsi']; ?></textarea>
+        <textarea name="deskripsi" id="editor1" cols="30" rows="10" class="input-control"><?= $produk['deskripsi']; ?></textarea>
         <small class="text-danger"><?= form_error('deskripsi'); ?></small>
         <label for="foto">Foto Produk</label><br>
         <img src="<?= base_url('assets/img/produk/' . $produk['foto_produk']); ?>" width="100">

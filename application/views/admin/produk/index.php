@@ -25,7 +25,7 @@
           	<td><?= $p['nama_kate']; ?></td>
           	<td><?= $p['nama_produk']; ?></td>
           	<td><?= number_format($p['harga'], 0 , ',', '.'); ?></td>
-          	<td><?= $p['deskripsi']; ?></td>
+          	<td><?= word_limiter($p['deskripsi'], 30); ?></td>
           	<td>
           		<img src="<?= base_url('assets/img/produk/' . $p['foto_produk']); ?>" width="100">
           	</td>

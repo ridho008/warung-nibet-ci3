@@ -1,5 +1,6 @@
 <header>
 	<div class="container">
+		<?php if($this->session->userdata('username')) : ?>
 		<h1>
 			<a href="<?= base_url('admin/dashboard'); ?>">Warung</a>
 		</h1>
@@ -10,5 +11,13 @@
 			<li><a href="<?= base_url('admin/produk'); ?>">Produk</a></li>
 			<li><a href="<?= base_url('auth/logout'); ?>">Logout</a></li>
 		</ul>
+		<?php else : ?>
+			<h1>
+				<a href="<?= base_url(); ?>">Warung</a>
+			</h1>
+			<ul>
+				<li><a href="<?= base_url('admin/produk'); ?>">Produk</a></li>
+			</ul>
+		<?php endif; ?>
 	</div>
 </header>

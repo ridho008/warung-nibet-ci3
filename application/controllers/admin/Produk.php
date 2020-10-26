@@ -47,7 +47,7 @@ class Produk extends CI_Controller {
 
 		if($fotoProduk) {
 			$config['upload_path']          = './assets/img/produk/';
-            $config['allowed_types']        = 'jpg|png';
+            $config['allowed_types']        = 'jpg|png|jpeg';
             $config['max_size']             = 2048;
 
             $this->load->library('upload', $config);
@@ -63,11 +63,14 @@ class Produk extends CI_Controller {
             }
 		}
 
+		$slug = str_replace(' ', '-', $this->input->post('produk', true));
+
 		$data = [
 			'kategori_id' => html_escape($this->input->post('kategori', true)),
-			'nama_produk' => html_escape($this->input->post('produk', true)),
+			'nama_produk' => html_escape(ucwords($this->input->post('produk', true))),
+			'slug' => html_escape(strtolower($slug)),
 			'harga' => html_escape($this->input->post('harga', true)),
-			'deskripsi' => html_escape($this->input->post('deskripsi', true)),
+			'deskripsi' => $this->input->post('deskripsi', true),
 			'foto_produk' => $fotoProduk,
 			'status' => 1
 		];
@@ -83,6 +86,13 @@ class Produk extends CI_Controller {
 		$data['title'] = 'Ubah Data Produk';
 		$where = ['produk_id' => $id];
 		$data['produk'] = $this->Produk_m->get_where('produk', $where)->row_array();
+		$data['countProduk'] = $this->Produk_m->get_where('produk', $where)->num_rows();
+
+		if(empty($data['countProduk'])) {
+			$this->session->set_flashdata('pesan', '<div class="alert-danger">Data Produk Tidak Tersedia.</div>');
+			redirect('admin/produk');
+		}
+
 		$data['kategori'] = $this->Produk_m->get('kategori')->result_array();
 
 		$this->form_validation->set_rules('kategori', 'Kategori', 'required|trim');
@@ -106,7 +116,7 @@ class Produk extends CI_Controller {
 
 		if($fotoProduk) {
 			$config['upload_path']          = './assets/img/produk/';
-            $config['allowed_types']        = 'jpg|png';
+            $config['allowed_types']        = 'jpg|png|jpeg';
             $config['max_size']             = 2048;
 
             $this->load->library('upload', $config);
@@ -130,11 +140,12 @@ class Produk extends CI_Controller {
 		}
 
 		$where = ['produk_id' => $id];
+		// $slug = str_replace(' ', '-', $this->input->post('produk', true));
 		$data = [
 			'kategori_id' => html_escape($this->input->post('kategori', true)),
 			'nama_produk' => html_escape(ucwords($this->input->post('produk', true))),
 			'harga' => html_escape($this->input->post('harga', true)),
-			'deskripsi' => html_escape($this->input->post('deskripsi', true))
+			'deskripsi' => $this->input->post('deskripsi', true)
 		];
 
 		$this->Produk_m->update('produk', $data, $where);

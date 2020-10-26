@@ -34,7 +34,8 @@ class Kategori extends CI_Controller {
 			$this->load->view('layout/footer');
 		} else {
 			$data = [
-				'nama_kate' => html_escape(ucwords($this->input->post('kategori', true)))
+				'nama_kate' => html_escape(ucwords($this->input->post('kategori', true))),
+				'slug_kate' => html_escape(str_replace(' ', '-', strtolower($this->input->post('kategori', true))))
 			];
 
 			$this->Kategori_m->insert('kategori', $data);
@@ -58,7 +59,8 @@ class Kategori extends CI_Controller {
 		} else {
 			$where = ['kategori_id' => $id];
 			$data = [
-				'nama_kate' => html_escape(ucwords($this->input->post('kategori', true)))
+				'nama_kate' => html_escape(ucwords($this->input->post('kategori', true))),
+				'slug_kate' => html_escape(str_replace(' ', '-', strtolower($this->input->post('kategori', true))))
 			];
 
 			$this->Kategori_m->update('kategori', $data, $where);

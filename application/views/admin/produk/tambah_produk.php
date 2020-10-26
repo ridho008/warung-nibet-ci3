@@ -18,7 +18,7 @@
         <input type="number" name="harga" id="harga" class="input-control">
         <small class="text-danger"><?= form_error('harga'); ?></small>
         <label for="deskripsi">Deskripsi</label>
-        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="input-control"></textarea>
+        <textarea name="deskripsi" id="editor1" cols="30" rows="10" class="input-control"></textarea>
         <small class="text-danger"><?= form_error('deskripsi'); ?></small>
         <label for="foto">Foto Produk</label>
         <input type="file" name="foto" id="foto" class="input-control">

@@ -8,6 +8,7 @@ class Kategori extends CI_Controller {
 		$this->load->model('Auth_m');
 		$this->load->model('Kategori_m');
 		$this->load->library('form_validation');
+		cekSession();
 	}
 
 	public function index()

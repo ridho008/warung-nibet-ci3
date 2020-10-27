@@ -16,8 +16,19 @@
 				<a href="<?= base_url(); ?>">Warung</a>
 			</h1>
 			<ul>
-				<li><a href="<?= base_url('admin/produk'); ?>">Produk</a></li>
+				<li><a href="<?= base_url('auth'); ?>">Login</a></li>
 			</ul>
 		<?php endif; ?>
 	</div>
 </header>
+
+<?php if(!$this->uri->segment(2) == 'admin/dashboard') : ?>
+<div class="search">
+	<div class="container">
+		<form action="<?= base_url('cari'); ?>" method="get">
+      <input type="text" name="keyword" class="input-control" value="<?= $this->input->get('keyword'); ?>" placeholder="cari nama produk" autofocus="on">
+      <input type="submit" name="cari" value="Cari" class="btn">
+		</form>
+	</div>
+</div>
+<?php endif; ?>

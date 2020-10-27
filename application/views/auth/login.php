@@ -6,7 +6,7 @@
     <input type="text" name="username" placeholder="Username" class="input-control">
     <small class="text-muted text-danger"><?= form_error('username'); ?></small>
     <label for="password">Password</label>
-    <input type="text" name="password" placeholder="Password" class="input-control">
+    <input type="password" name="password" placeholder="Password" class="input-control">
     <small class="text-danger"><?= form_error('password'); ?></small>
     <button type="submit" class="btn">Login</button>
 	<?= form_close(); ?>

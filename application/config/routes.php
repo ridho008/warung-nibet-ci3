@@ -51,5 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'beranda';
 $route['profil/(:any)'] = 'admin/dashboard/profil/$1';
+$route['cari'] = 'beranda/cari';
+$route['produk/kategori/(:any)'] = 'beranda/kategori/$1';
+$route['produk/(:any)'] = 'beranda/detail/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

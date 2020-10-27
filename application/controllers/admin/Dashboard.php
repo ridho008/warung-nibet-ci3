@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Auth_m');
 		$this->load->library('form_validation');
+		cekSession();
 	}
 
 	public function index()

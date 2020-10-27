@@ -1,4 +1,4 @@
-<footer>
+<footer class="<?= $this->uri->segment(1) == 'auth' ? 'footer' : '' ?> footer-beranda">
 	<div class="container">
 		<small>Copyright &copy; <?= date('Y'); ?> - Warung Nibet.</small>
 	</div>

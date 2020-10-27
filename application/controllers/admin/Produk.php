@@ -8,6 +8,7 @@ class Produk extends CI_Controller {
 		$this->load->model('Auth_m');
 		$this->load->model('Produk_m');
 		$this->load->library('form_validation');
+		cekSession();
 	}
 
 	public function index()

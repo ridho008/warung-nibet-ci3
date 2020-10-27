@@ -11,6 +11,7 @@ class Auth extends CI_Controller {
 
 	public function index()
 	{
+		$this->cekLogin();
 		$data['title'] = 'Halaman Login';
 		$this->form_validation->set_rules('username', 'Username', 'required|trim');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim');
@@ -53,6 +54,13 @@ class Auth extends CI_Controller {
 		$this->session->unset_userdata('user_id');
 		$this->session->set_flashdata('pesan', '<div class="alert-success">Berhasil Logout</div>');
 		redirect('auth');
+	}
+
+	public function cekLogin()
+	{
+		if($this->session->userdata('username')) {
+			redirect('admin/dashboard');
+		}
 	}
 
 }

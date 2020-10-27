@@ -29,5 +29,26 @@ class Produk_m extends CI_Model {
 		return $this->db->get('produk');
 	}
 
+	public function getProdukKeyword($keyword)
+	{
+		$this->db->join("kategori", "kategori.kategori_id = produk.kategori_id");
+		$this->db->like('nama_produk', $keyword);
+		return $this->db->get('produk');
+	}
+
+	public function getKategoriWhere($slug)
+	{
+		$this->db->join("kategori", "kategori.kategori_id = produk.kategori_id");
+		$this->db->where('slug_kate', $slug);
+		return $this->db->get('produk');
+	}
+
+	public function getDetailProdukWhere($slug)
+	{
+		$this->db->join("kategori", "kategori.kategori_id = produk.kategori_id");
+		$this->db->where('slug', $slug);
+		return $this->db->get('produk');
+	}
+
 
 }
